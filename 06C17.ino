@@ -14,12 +14,9 @@ void set_period(int period) {
 
 // 함수 2
 void set_duty(int duty) {
-  if (duty >= 0 && duty <= 100) {
-    // 현재 주기에 맞춰 ON/OFF 시간 계산
-    onTimeUs = currentPeriodUs * (duty / 100.0);
-    offTimeUs = currentPeriodUs - onTimeUs;
+  onTimeUs = currentPeriodUs * (duty / 100.0);
+  offTimeUs = currentPeriodUs - onTimeUs;
   }
-}
 
 void customPwm() {
   // digitalWrite()와 delayMicroseconds() 사용
@@ -37,9 +34,9 @@ void customPwm() {
 void setup() {
   pinMode(ledPin, OUTPUT);
 
-  set_period(10000); // 10ms 
+  //set_period(10000); // 10ms 
   //set_period(1000);  // 1ms 
-  //set_period(100);   // 0.1ms 
+  set_period(100);   // 0.1ms 
 }
 
 void loop() {
